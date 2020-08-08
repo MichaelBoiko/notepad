@@ -6,7 +6,7 @@
 	$sql = "SELECT * FROM tasks";
 	$statement = $pdo->prepare($sql); //подготовить
 	$result = $statement->execute(); //true || false
-	$tasks = $statement->fetchAll(PDO::FETCH_ASSOC);
+	$tasks = $statement->fetchAll(PDO::FETCH_ASSOC); // $tasks = $statement->fetchAll(2);
 	//Получаем записи
 ?>
 
@@ -36,16 +36,19 @@
 					</thead>
 					<tbody>
 						<?php foreach($tasks as $task):?>
-
-						<tr>
-							<td><?=$task["id"];?></td>
-							<td><?=$task["title"];?></td>
-							<td>
-								<a href="#" class="btn btn-warning">Show</a>
-								<a href="#" class="btn btn-danger">Edit</a>
-							</td>
-						</tr>
-
+							<tr>
+									<td><?= $task["id"];?></td>
+									<td><?= $task["title"];?></td>
+									<td>
+											<a href="show.php?id=<?= $task["id"];?>" class="btn btn-info">
+													Show
+											</a>
+											<a href="edit.php?id=<?= $task["id"];?>" class="btn btn-warning">
+													Edit
+											</a>
+											<a  href="delete.php?id=<?= $task["id"];?>" class="btn btn-danger">Delete</a>
+									</td>
+							</tr>
 						<?php endforeach;?>
 					</tbody>
 				</table>

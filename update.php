@@ -8,7 +8,7 @@ $data = [
 
 $pdo = new PDO("mysql:host=localhost;dbname=notepad", "root", "root");
 // $sql = 'UPDATE tasks SET title=:title, content=:content WHERE tasks. id=:id';
-$sql = 'UPDATE `tasks` SET `title`=[":title"],`content`=[":content"] WHERE `id`=[":id"]';
+$sql = "UPDATE tasks SET title=[:title] content=[:content] WHERE id=[:id]";
 
 $statement = $pdo->prepare($sql);
 $statement->bindParam(":id", $_GET['id']);
@@ -17,6 +17,5 @@ $statement->bindParam(":title", $_POST['title']);
 
 
 $result = $statement->execute($data);
-var_dump($result); die;
 
 header("Location: /"); exit;

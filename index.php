@@ -1,13 +1,17 @@
 
 <?php
-	// 1. Подключиться к БД
-	$pdo = new PDO("mysql:host=localhost; dbname=notepad", "root", "root");
-	//2. Подготовить запрос
-	$sql = "SELECT * FROM tasks";
-	$statement = $pdo->prepare($sql); //подготовить
-	$result = $statement->execute(); //true || false
-	$tasks = $statement->fetchAll(PDO::FETCH_ASSOC); // $tasks = $statement->fetchAll(2);
-	//Получаем записи
+	function getAllTasks(){
+		// 1. Подключиться к БД
+		$pdo = new PDO("mysql:host=localhost; dbname=notepad", "root", "root");
+		//2. Подготовить запрос
+		$sql = "SELECT * FROM tasks";
+		$statement = $pdo->prepare($sql); 
+		$result = $statement->execute(); 
+		$tasks = $statement->fetchAll(PDO::FETCH_ASSOC);
+		return $tasks;
+	}
+
+	$tasks = getAlltasks();
 ?>
 
 
@@ -37,17 +41,17 @@
 					<tbody>
 						<?php foreach($tasks as $task):?>
 							<tr>
-									<td><?= $task["id"];?></td>
-									<td><?= $task["title"];?></td>
-									<td>
-											<a href="show.php?id=<?= $task["id"];?>" class="btn btn-info">
-													Show
-											</a>
-											<a href="edit.php?id=<?= $task["id"];?>" class="btn btn-warning">
-													Edit
-											</a>
-											<a  href="delete.php?id=<?= $task["id"];?>" class="btn btn-danger">Delete</a>
-									</td>
+                                <td><?= $task["id"];?></td>
+                                <td><?= $task["title"];?></td>
+                                <td>
+                                    <a href="show.php?id=<?= $task["id"];?>" class="btn btn-info">
+                                        Show
+                                    </a>
+                                    <a href="edit.php?id=<?= $task["id"];?>" class="btn btn-warning">
+                                        Edit
+                                    </a>
+                                    <a  href="delete.php?id=<?= $task["id"];?>" class="btn btn-danger">Delete</a>
+                                </td>
 							</tr>
 						<?php endforeach;?>
 					</tbody>

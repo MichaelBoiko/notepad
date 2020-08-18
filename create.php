@@ -15,11 +15,9 @@
 					<div class="form-group">
 						<input type="text" class="form-control" value="Go to the store" name="title">
 					</div>
-
 					<div class="form-group">
 						<textarea name="content" class="form-control">Subscribe</textarea>
 					</div>
-
 					<div class="form-group">
 						<button type="submit" class="btn btn-success">Submit</button>
 					</div>

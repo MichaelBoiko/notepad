@@ -9,4 +9,3 @@
 		}
 
 		addTask($_POST);
-?>

@@ -1,18 +1,16 @@
 <?php
-		$data = [
-				"id"    =>  $_GET['id'],
-				"title" =>  $_POST['title'],
-				"content" =>  $_POST['content']
-		];
 
-		function updateTask($data){
-				$pdo = new PDO("mysql:host=localhost;dbname=notepad", "root", "root");
-				$sql = "UPDATE tasks SET title=:title content=:content WHERE id=:id";
-				$statement = $pdo->prepare($sql);
-				$statement->execute($data);
+	function updateTask(){
+		$id    =  $_GET['id'];
+		$title =  $_POST['title'];
+		$content =  $_POST['content'];
 
-				header("Location: /"); exit;
-		}
+		$pdo = new PDO("mysql:host=localhost;dbname=notepad", "root", "root");
+		$sql = "UPDATE `tasks` SET `id`=:id,`title`=:title,`content`=:content WHERE `id`=:id";
+		$statement = $pdo->prepare($sql);
+		$statement->execute(array(":title"=>$title, ":content"=>$content, ":id"=>$id));
 
-		updateTask($data);
-?>
+		header("Location: /"); exit;
+	}
+
+	updateTask();

@@ -1,5 +1,4 @@
-
-================================================ Notepad ================================================
+===== Notepad =====
 
 
 1. In order to open this simple notepad, you must create a database using next commands with "terminal".
